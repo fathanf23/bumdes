@@ -40,4 +40,5 @@ Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('ad
 
 // Admin Produk
 Route::get('/admin/produk/index', [ProdukController::class, 'index']);
+Route::get('/admin/produk/create', [ProdukController::class, 'create']);
 

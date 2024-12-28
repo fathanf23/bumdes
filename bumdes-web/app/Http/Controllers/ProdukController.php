@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Produk;
 
 class ProdukController extends Controller
 {
@@ -11,7 +12,15 @@ class ProdukController extends Controller
      */
     public function index()
     {
-        return view('admin.produk.index');
+        $produk = Produk::join('jenis_produk', 'produk.jenis_produk_id', '=', 'jenis_produk.id')
+        ->select(
+            'nm_produk',
+            'harga',
+            'deskripsi',
+            'foto',
+            'jenis_produk.jenis_produk',
+        )->get();
+        return view('admin.produk.index', compact('produk'));
     }
 
     /**
@@ -19,7 +28,7 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.produk.create');
     }
 
     /**
