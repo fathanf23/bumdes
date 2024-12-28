@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,5 +34,10 @@ Route::get('/all-product', function () {
     return view('all-product');
 });
 
+
+// Admin
 Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('admin');
+
+// Admin Produk
+Route::get('/admin/produk/index', [ProdukController::class, 'index']);
 
