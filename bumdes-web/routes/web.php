@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\FrontController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,10 @@ Route::get('/playground', function () {
 Route::get('/all-product', function () {
     return view('all-product');
 });
+
+Route::get('/frontend/catering/', [FrontController::class, 'catering']);
+
+Route::get('/frontend/beranda/', [FrontController::class, 'beranda']);
 
 
 // Admin

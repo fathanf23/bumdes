@@ -1,4 +1,4 @@
-@extends('frontend/layouts.app')
+@extends('frontend.layouts.app')
 
 @section('content')
 <!-- Hero Section -->
@@ -18,7 +18,7 @@
     </a>
 
     <!-- Catering -->
-    <a href="{{ route('catering') }}" class="block bg-white p-4 shadow-md hover:shadow-lg transition-shadow duration-200">
+    <a href="" class="block bg-white p-4 shadow-md hover:shadow-lg transition-shadow duration-200">
         <img src="/img/catering.jpg" alt="Catering" class="w-full h-32 object-cover rounded-md">
         <h2 class="mt-2 text-lg font-bold text-gray-800">Catering</h2>
         <p class="text-gray-600">Layanan katering untuk kebutuhan acara Anda.</p>
