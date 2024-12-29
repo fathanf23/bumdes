@@ -35,7 +35,7 @@ Route::get('/all-product', function () {
     return view('all-product');
 });
 
-Route::get('/catering', [FrontController::class, 'catering']);
+Route::get('/catering', [FrontController::class, 'catering'])->name('catering');
 
 Route::get('/frontend/beranda/', [FrontController::class, 'beranda']);
 
