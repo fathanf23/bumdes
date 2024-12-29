@@ -3,93 +3,70 @@
 
 <section class="py-3" style="background-image: url('images/background-pattern.jpg');background-repeat: no-repeat;background-size: cover;">
     <div class="container-fluid">
+      <!-- Hero Section -->
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 text-center text-white banner-section">
+            <h1 class="display-3 fw-bold mt-5">BUMDes</h1>
+            <p class="fs-5">BADAN USAHA MILIK DESA</p>
+        </div>
+    </div>    
+      <!-- End Hero Section -->
 
-          <div class="banner-blocks">
-          
-            <div class="banner-ad large bg-info block-1">
-
-              <div class="swiper main-swiper">
-                <div class="swiper-wrapper">
-                  
-                  <div class="swiper-slide">
-                    <div class="row banner-content p-5">
-                      <div class="content-wrapper col-md-7">
-                        <div class="categories my-3"></div>
-                        <h3 class="display-4">Badan Usaha Milik Desa Linggar</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                        <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1 px-4 py-3 mt-3">Shop Now</a>
-                      </div>
-                      <div class="img-wrapper col-md-5">
-                        <img src="images/beranda.jpg" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                    <div class="row banner-content p-5">
-                      <div class="content-wrapper col-md-7">
-                        <div class="categories mb-3 pb-3">100% natural</div>
-                        <h3 class="banner-title">Fresh Smoothie & Summer Juice</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                        <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">Shop Collection</a>
-                      </div>
-                      <div class="img-wrapper col-md-5">
-                        <img src="images/product-thumb-1.png" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div class="swiper-slide">
-                    <div class="row banner-content p-5">
-                      <div class="content-wrapper col-md-7">
-                        <div class="categories mb-3 pb-3">100% natural</div>
-                        <h3 class="banner-title">Heinz Tomato Ketchup</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Dignissim massa diam elementum.</p>
-                        <a href="#" class="btn btn-outline-dark btn-lg text-uppercase fs-6 rounded-1">Shop Collection</a>
-                      </div>
-                      <div class="img-wrapper col-md-5">
-                        <img src="images/product-thumb-2.png" class="img-fluid">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="swiper-pagination"></div>
-
+      <!-- Services Section -->
+      <div class="row mt-5">
+        <div class="col-md-6">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <img src="{{ asset('frontend/images/playground.jpg') }}" class="img-fluid w-100" alt="Playground">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <h3 class="text-white">Playground</h3>
               </div>
             </div>
-            
-            <div class="banner-ad bg-success-subtle block-2" style="background:url('images/ad-image-1.png') no-repeat;background-position: right bottom">
-              <div class="row banner-content p-5">
-
-                <div class="content-wrapper col-md-7">
-                  <div class="categories sale mb-3 pb-3">20% off</div>
-                  <h3 class="banner-title">Fruits & Vegetables</h3>
-                  <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24"><use xlink:href="#arrow-right"></use></svg></a>
-                </div>
-
-              </div>
-            </div>
-
-            <div class="banner-ad bg-danger block-3" style="background:url('images/ad-image-2.png') no-repeat;background-position: right bottom">
-              <div class="row banner-content p-5">
-
-                <div class="content-wrapper col-md-7">
-                  <div class="categories sale mb-3 pb-3">15% off</div>
-                  <h3 class="item-title">Baked Products</h3>
-                  <a href="#" class="d-flex align-items-center nav-link">Shop Collection <svg width="24" height="24"><use xlink:href="#arrow-right"></use></svg></a>
-                </div>
-
-              </div>
-            </div>
-
           </div>
-          <!-- / Banner Blocks -->
-            
+        </div>
+        <div class="col-md-6">
+            <a href="{{ route('catering') }}" class="text-decoration-none">
+          <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <img src="{{ asset('frontend/images/catering.jpg') }}" class="img-fluid w-100" alt="Catering">
+              <div class="overlay d-flex justify-content-center align-items-center">
+                <h3 class="text-white">Catering</h3>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+      <!-- End Services Section -->
     </div>
-  </section>
+</section>
+
+<style>
+    .banner-section {
+    background-image: url('/frontend/images/beranda.jpg'); /* Path gambar */
+    background-size: cover; /* Membuat gambar menutupi area */
+    background-position: center; /* Menyesuaikan posisi gambar */
+    height: 60vh; /* Tinggi area */
+    display: flex; /* Membantu pusatkan konten */
+    flex-direction: column; /* Atur konten vertikal */
+    justify-content: center; /* Pusatkan secara vertikal */
+    align-items: center; /* Pusatkan secara horizontal */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Tambahkan bayangan teks agar lebih jelas */
+}
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .card:hover .overlay {
+    opacity: 1;
+  }
+</style>
+
 @endsection

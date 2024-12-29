@@ -39,6 +39,8 @@ Route::get('/frontend/catering/', [FrontController::class, 'catering']);
 
 Route::get('/frontend/beranda/', [FrontController::class, 'beranda']);
 
+Route::get('/frontend/beranda/', [FrontController::class, 'beranda'])->name('beranda');
+
 
 // Admin
 Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('admin');
@@ -50,4 +52,5 @@ Route::post('/admin/produk/store', [ProdukController::class, 'store']);
 Route::get('/admin/produk/destroy/{id}', [ProdukController::class, 'destroy']);
 Route::get('/admin/produk/edit/{id}', [ProdukController::class, 'edit']);
 Route::post('/admin/produk/update/{id}', [ProdukController::class, 'post']);
+
 
