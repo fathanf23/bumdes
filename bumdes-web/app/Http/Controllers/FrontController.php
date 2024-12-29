@@ -18,6 +18,10 @@ class FrontController extends Controller
     {
         return view('frontend.beranda');
     }
+    public function playground()
+    {
+        return view('playground'); // Pastikan file 'playground.blade.php' ada
+    }
 
     /**
      * Show the form for creating a new resource.
