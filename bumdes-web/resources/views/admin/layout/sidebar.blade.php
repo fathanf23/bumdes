@@ -56,8 +56,8 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="{{url('admin/produk/index')}}">Produk</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Jenis Produk</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Transaksi</a>
+                                    <a class="nav-link" href="">Jenis Produk</a>
+                                    <a class="nav-link" href="{{url('admin/transaksi/index')}}">Transaksi</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">Detail Transaksi</a>
                                     <a class="nav-link" href="layout-sidenav-light.html">User</a>
                                 </nav>

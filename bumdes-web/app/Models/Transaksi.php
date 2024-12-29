@@ -5,15 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class User extends Model
+class Transaksi extends Model
 {
     use HasFactory;
-    protected $table = 'user';
-    protected $fillable = ['username', 'password'];
-    public function transaksi()
-    {
-        return $this->hasMany(Transaksi::class);
-    }
+    protected $table = 'transaksi';
+    protected $fillable = ['no_transaksi', 'tanggal', 'pembayaran', 'total_bayar', 'status', 'jenis_transaksi', 'bukti_bayar', 'user_id'];
     public function user()
     {
         return $this->belongsTo(User::class);

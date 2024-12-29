@@ -35,7 +35,7 @@ Route::get('/all-product', function () {
     return view('all-product');
 });
 
-Route::get('/frontend/catering/', [FrontController::class, 'catering']);
+Route::get('/catering', [FrontController::class, 'catering']);
 
 Route::get('/frontend/beranda/', [FrontController::class, 'beranda']);
 
@@ -54,3 +54,7 @@ Route::get('/admin/produk/edit/{id}', [ProdukController::class, 'edit']);
 Route::post('/admin/produk/update/{id}', [ProdukController::class, 'post']);
 
 
+// Admin Transaksi
+Route::get('/admin/transaksi/index', [TransaksiController::class, 'index']);
+Route::get('/admin/transaksi/create', [TransaksiController::class, 'create']);
+Route::post('/admin/transaksi/store', [TransaksiController::class, 'store']);
