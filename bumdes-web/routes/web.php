@@ -46,4 +46,8 @@ Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('ad
 // Admin Produk
 Route::get('/admin/produk/index', [ProdukController::class, 'index']);
 Route::get('/admin/produk/create', [ProdukController::class, 'create']);
+Route::post('/admin/produk/store', [ProdukController::class, 'store']);
+Route::get('/admin/produk/destroy/{id}', [ProdukController::class, 'destroy']);
+Route::get('/admin/produk/edit/{id}', [ProdukController::class, 'edit']);
+Route::post('/admin/produk/update/{id}', [ProdukController::class, 'post']);
 
