@@ -3,7 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\FrontController;
+use App\Http\Controllers\TransaksiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,7 +41,15 @@ Route::prefix('admin/produk')->group(function () {
     Route::get('/edit/{id}', [ProdukController::class, 'edit']);
     Route::post('/update/{id}', [ProdukController::class, 'post']);
 });
-
+Route::prefix('admin/jenis_produk')->group(function () {
+    Route::get('/index', [JenisProdukController::class, 'index']);
+    Route::get('/create', [JenisProdukController::class, 'create']);
+    Route::post('/store', [JenisProdukController::class, 'store']);
+    Route::get('/destroy/{id}', [JenisProdukController::class, 'destroy']);
+    Route::get('/edit/{id}', [JenisProdukController::class, 'edit']);
+    Route::post('/update/{id}', [JenisProdukController::class, 'update']);
+   
+});
 // Admin Transaksi
 Route::prefix('admin/transaksi')->group(function () {
     Route::get('/index', [TransaksiController::class, 'index']);

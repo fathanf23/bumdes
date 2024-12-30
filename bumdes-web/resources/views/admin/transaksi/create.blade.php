@@ -11,7 +11,7 @@
                 @csrf
                 <div class="mb-3">
                     <label for="jenis_produk" class="form-label text-dark font-weight-bold">Metode Pembayaran</label>
-                    <select class="form-select" name="jenis_produk" id="jenis_produk">
+                    <select class="form-select" name="pembayaran" id="jenis_produk">
                         <option selected disabled>Pilih Metode</option>
                         <option value="TRANSFER">Transfer</option>
                         <option value="CASH">Cash</option>
@@ -24,7 +24,7 @@
                 
                 <div class="mb-3">
                     <label for="jenis_produk" class="form-label text-dark font-weight-bold">Jenis Transaksi</label>
-                    <select class="form-select" name="jenis_produk" id="jenis_produk">
+                    <select class="form-select" name="jenis_transaksi" id="jenis_produk">
                         <option selected disabled>Pilih Jenis Transaksi</option>
                         <option value="Playground">Playground</option>
                         <option value="Makanan">Makanan</option>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="jenis_produk" class="form-label text-dark font-weight-bold">User/Pelanggan</label>
-                    <select class="form-select" name="jenis_produk" id="jenis_produk">
+                    <select class="form-select" name="user_id" id="jenis_produk">
                         <option selected disabled>Pilih Pelanggan</option>
                         @foreach($user as $item)
                         <option value="{{$item->id}}">{{$item->username}}</option>
@@ -46,7 +46,7 @@
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary text-white mx-2"><i class="fas fa-check"></i>
                         Submit</button>
-                    <a href="{{url('admin/produk/index')}}" class="btn btn-secondary text-white mx-2"><i
+                    <a href="{{url('admin/transaksi/index')}}" class="btn btn-secondary text-white mx-2"><i
                             class="fas fa-arrow-left"></i> Kembali</a>
                 </div>
             </form>

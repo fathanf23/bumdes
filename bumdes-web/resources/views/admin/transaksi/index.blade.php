@@ -52,7 +52,9 @@
                             <td>{{$t->total_bayar}}</td>
                             <td>{{$t->status}}</td>
                             <td>{{$t->jenis_transaksi}}</td>
-                            <td>{{$t->bukti_bayar}}</td>
+                            <td>
+                                <img src="{{ URL::asset('img_bukti_bayar/' . $t->bukti_bayar) }}" alt="" style="width: 100px; height: auto;">
+                            </td>
                             <td>{{$t->user->username}}</td>
                         </tr>
                         @endforeach

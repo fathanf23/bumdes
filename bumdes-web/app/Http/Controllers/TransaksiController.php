@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Transaksi;
 use App\Models\User;
 use Illuminate\Http\Request;
+use DB;
 
 class TransaksiController extends Controller
 {
@@ -31,6 +32,7 @@ class TransaksiController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $lastEntry = DB::table('transaksi')->orderBy('no_transaksi', 'desc')->first();
 
     if ($lastEntry) {
@@ -52,24 +54,21 @@ class TransaksiController extends Controller
             // Pindahkan file ke direktori tujuan
             $file->move(public_path($filepath), $filename);
             DB::table('transaksi')->insert([
-                'no_pendaftaran' => $newNoTransaksi, // Nomor pendaftaran otomatis
+                'no_transaksi' => $newNoTransaksi, // Nomor pendaftaran otomatis
                 'tanggal' => now(),
+                'pembayaran' => $request->input('pembayaran'),
                 'total_bayar' => $request->input('total_bayar'),
                 'status' => 'Pending',
                 'jenis_transaksi' => $request->input('jenis_transaksi'),
                 'bukti_bayar' => $filename,
-                'user_id' => $user_id,
+                'user_id' => $request->input('user_id'),
             ]);
     
             // Redirect dengan pesan sukses
-            return redirect('admin/produk/index')->with('success', 'Produk berhasil ditambahkan!');
+            return redirect('admin/transaksi/index')->with('success', 'Produk berhasil ditambahkan!');
         }
-    
-        // Jika file tidak ada
-        return redirect()->back()->with('error', 'Foto produk wajib diunggah!');
-    }
             // Menyimpan data ke database menggunakan SQL
-
+    }
     /**
      * Display the specified resource.
      */
