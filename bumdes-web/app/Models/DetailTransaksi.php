@@ -10,6 +10,7 @@ class DetailTransaksi extends Model
     use HasFactory;
     protected $table = 'detail_transaksi';
     protected $fillable = ['produk_id', 'transaksi_id', 'jumlah', 'subtotal'];
+    public $timestamps = false;
     public function produk()
     {
         return $this->belongsTo(Produk::class);

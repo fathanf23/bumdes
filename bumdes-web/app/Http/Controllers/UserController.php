@@ -12,7 +12,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::get();
+        return view('admin.user.index', compact('user'));
     }
 
     /**
