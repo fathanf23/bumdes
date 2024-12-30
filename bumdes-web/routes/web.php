@@ -12,7 +12,7 @@ use App\Http\Controllers\FrontController;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return view('frontend/beranda');
 });
 
 // Route Halaman Utama
@@ -22,14 +22,9 @@ Route::get('/all-product', function () {
     return view('all-product');
 });
 
-<<<<<<< HEAD
 Route::get('/catering', [FrontController::class, 'catering'])->name('catering');
 
-Route::get('/frontend/beranda/', [FrontController::class, 'beranda']);
-
-=======
 // Route Beranda
->>>>>>> be42c89fb7ce6b142afa0998c4b7e4cb897770ac
 Route::get('/frontend/beranda/', [FrontController::class, 'beranda'])->name('beranda');
 
 // Admin Dashboard
