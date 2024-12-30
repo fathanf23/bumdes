@@ -45,10 +45,10 @@
               <a class="nav-link" href="#">Semua Produk</a>
             </li>
           </ul>
-          <div class="flex items-center space-x-2">
-            <img src="/img/cart-icon.svg" alt="Cart" class="w-6 h-6">
-            <span class="text-gray-600 font-medium">Cart</span>
-        </div>
+          <div style="display: flex; align-items: center; gap: 8px; margin-left: 8px">
+            <img src="/frontend/images/cart-bumdes.png" alt="Cart" style="width: 16px; height: 16px;">
+            <span style="color: #4B5563; font-weight: 500;"></span>
+        </div>                   
         </div>
       </div>
     </nav>
@@ -58,3 +58,4 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoA6wXx2MnfMNUTMBn4ckj4W9HGloG9E3JGQGkvsg+p" crossorigin="anonymous"></script>
   </body>
 </html>
+
