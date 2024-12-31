@@ -9,7 +9,7 @@
                     DataTable Produk
                 </div>
                 <a href="{{ url('/admin/user/create') }}" class="btn bg-primary d-flex align-items-center"
-                   style="width: fit-content;">
+                    style="width: fit-content;">
                     <i class="fas fa-plus text-white mr-2"></i>
                     <span class="text-white font-weight-bold">Tambah User</span>
                 </a>
@@ -19,15 +19,17 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Jenis Produk</th>
-                            <th>Aksi</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>Jenis Produk</th>
-                            <th>Aksi</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Role</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -36,6 +38,7 @@
                             <td>{{$loop->iteration}}</td>
                             <td>{{$item->username}}</td>
                             <td>{{$item->password}}</td>
+                            <td>{{$item->role}}</td>
                         </tr>
                         @endforeach
                     </tbody>

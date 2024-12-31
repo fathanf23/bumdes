@@ -23,6 +23,7 @@
                             <th>Nama Produk</th>
                             <th>Jumlah</th>
                             <th>Subtotal</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -32,19 +33,55 @@
                             <th>Nama Produk</th>
                             <th>Jumlah</th>
                             <th>Subtotal</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
-                        @foreach($detail_transaksi as $item)
-                        <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$item->transaksi->no_transaksi}}</td>
-                            <td>{{$item->produk->nm_produk}}</td>
-                            <td>{{$item->jumlah}}</td>
-                            <td>{{$item->subtotal}}</td>
-                        </tr>
-                        @endforeach
-</tbody>
+                    @foreach ($detail_transaksi as $dt)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $dt->no_transaksi }}</td>
+                    <td>{!! nl2br(e($dt->produk)) !!}</td>
+                    <td>{{ $dt->total_jumlah }}</td>
+                    <td>Rp {{ number_format($dt->total_subtotal, 0, ',', '.') }}</td>
+                    <td>
+                        <!-- Tombol Delete -->
+                        <a href="#" class="btn btn-md btn-danger px-2" data-bs-toggle="modal"
+                            data-bs-target="#deleteModal{{$dt->id}}">
+                            <i class="fas fa-trash"></i> Delete
+                        </a>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="deleteModal{{$dt->id}}" tabindex="-1"
+                            aria-labelledby="deleteModalLabel{{$dt->id}}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="deleteModalLabel{{$dt->id}}">Hapus Data</h5>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+
+                                    </div>
+                                    <div class="modal-body">
+                                        Apakah anda yakin ingin menghapus <strong>{{$dt->produk}}</strong>?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <a href="{{ url('admin/detail_transaksi/destroy/' . $dt->id) }}"
+                                            class="btn btn-danger">Delete</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <a href="{{url('admin/detail_transaksi/edit/'.$dt->id)}}" class="btn btn-md btn-primary px-2"> 
+                        <i class="fas fa-edit"></i></i> Edit
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+                    </tbody>
 
                 </table>
             </div>

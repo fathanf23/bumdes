@@ -57,13 +57,19 @@ Route::prefix('admin/transaksi')->group(function () {
     Route::get('/index', [TransaksiController::class, 'index']);
     Route::get('/create', [TransaksiController::class, 'create']);
     Route::post('/store', [TransaksiController::class, 'store']);
+    Route::get('/edit/{id}', [TransaksiController::class, 'edit']);
+    Route::post('/update/{id}', [TransaksiController::class, 'update']);
+    Route::get('/destroy/{id}', [TransaksiController::class, 'destroy']);
 });
 // Admin Detail Transaksi
 Route::prefix('admin/detail_transaksi')->group(function () {
     Route::get('/index', [DetailTransaksiController::class, 'index']);
     Route::get('/create', [DetailTransaksiController::class, 'create']);
     Route::post('/store', [DetailTransaksiController::class, 'store']);
-    Route::get('/edit/{no_transaksi}', [DetailTransaksiController::class, 'edit']);
+    Route::get('/edit/{id}', [DetailTransaksiController::class, 'edit']);
+    Route::post('/update/{id}', [DetailTransaksiController::class, 'update']);
+    Route::get('/destroy/{id}', [DetailTransaksiController::class, 'destroy']);
+
 });
 // Admin User
 Route::prefix('admin/user')->group(function () {

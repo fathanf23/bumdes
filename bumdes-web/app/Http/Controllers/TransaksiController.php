@@ -58,7 +58,7 @@ class TransaksiController extends Controller
                 'tanggal' => now(),
                 'pembayaran' => $request->input('pembayaran'),
                 'total_bayar' => $request->input('total_bayar'),
-                'status' => 'Pending',
+                'status' => 'PENDING',
                 'jenis_transaksi' => $request->input('jenis_transaksi'),
                 'bukti_bayar' => $filename,
                 'user_id' => $request->input('user_id'),
@@ -80,24 +80,58 @@ class TransaksiController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Transaksi $transaksi)
+    public function edit(String $id)
     {
-        //
+        $user = User::all();
+        $transaksi = Transaksi::get()->where('id', $id);
+        return view('admin.transaksi.edit', compact('user', 'transaksi'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Transaksi $transaksi)
+    public function update(Request $request, $id)
     {
-        //
+        $transaksi = Transaksi::findOrFail($id);
+
+        // Update data produk
+        $transaksi->pembayaran = $request->pembayaran;
+        $transaksi->status = $request->status;
+        $transaksi->total_bayar = $request->total_bayar;
+        $transaksi->jenis_transaksi = $request->jenis_transaksi;
+
+        // Cek apakah ada foto baru diunggah
+        if ($request->hasFile('bukti_bayar')) {
+            // Hapus foto lama jika ada
+            if ($transaksi->bukti_bayar && file_exists(public_path('img_bukti_bayar/' . $transaksi->bukti_bayar))) {
+                unlink(public_path('img_bukti_bayar/' . $transaksi->bukti_bayar));
+            }
+
+            // Simpan foto baru
+            $file = $request->file('bukti_bayar');
+            $nama_foto = time() . '_' . $file->getClientOriginalName();
+            $file->move(public_path('img_bukti_bayar'), $nama_foto);
+            $transaksi->bukti_bayar = $nama_foto;
+        }
+
+        // Simpan perubahan ke database
+        if ($transaksi->save()) {
+            return redirect('admin/transaksi/index')->with('success', 'Produk berhasil diperbarui');
+        } else {
+            return redirect()->back()->with('error', 'Gagal memperbarui produk');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Transaksi $transaksi)
+    public function destroy($id)
     {
-        //
+        $transaksi = Transaksi::where('id', $id)->first();
+        if (file_exists(public_path('img_bukti_bayar/' . $transaksi->bukti_bayar))) {
+            unlink(public_path('img_bukti_bayar/' . $transaksi->bukti_bayar));
+        }
+        $transaksi->delete();
+        return redirect('admin/transaksi/index');
     }
 }

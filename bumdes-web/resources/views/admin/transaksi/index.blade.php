@@ -27,6 +27,7 @@
                             <th>Jenis Transaksi</th>
                             <th>Bukti Bayar</th>
                             <th>Nama User</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
@@ -40,6 +41,7 @@
                             <th>Jenis Transaksi</th>
                             <th>Bukti Bayar</th>
                             <th>Nama User</th>
+                            <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
@@ -53,9 +55,46 @@
                             <td>{{$t->status}}</td>
                             <td>{{$t->jenis_transaksi}}</td>
                             <td>
-                                <img src="{{ URL::asset('img_bukti_bayar/' . $t->bukti_bayar) }}" alt="" style="width: 100px; height: auto;">
+                                <img src="{{ URL::asset('img_bukti_bayar/' . $t->bukti_bayar) }}" alt=""
+                                    style="width: 100px; height: auto;">
                             </td>
                             <td>{{$t->user->username}}</td>
+                            <td>
+                                <!-- Tombol Delete -->
+                                <a href="#" class="btn btn-md btn-danger px-2" data-bs-toggle="modal"
+                                    data-bs-target="#deleteModal{{$t->id}}">
+                                    <i class="fas fa-trash"></i> Delete
+                                </a>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="deleteModal{{$t->id}}" tabindex="-1"
+                                    aria-labelledby="deleteModalLabel{{$t->id}}" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="deleteModalLabel{{$t->id}}">Hapus Data</h5>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+
+                                            </div>
+                                            <div class="modal-body">
+                                                Apakah anda yakin ingin menghapus <strong>{{$t->no_transaksi}}</strong>?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Cancel</button>
+                                                <a href="{{ url('admin/transaksi/destroy/' . $t->id) }}"
+                                                    class="btn btn-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <a href="{{url('admin/transaksi/edit/'.$t->id)}}"
+                                    class="btn btn-md btn-primary px-2">
+                                    <i class="fas fa-edit"></i></i> Edit
+                                </a>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
