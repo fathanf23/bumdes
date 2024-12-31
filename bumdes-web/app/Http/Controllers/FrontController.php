@@ -11,7 +11,12 @@ class FrontController extends Controller
      */
     public function catering()
     {
-        $produk = Produk::get();
+        $produk = Produk::with('jenis_produk')
+        ->whereHas('jenis_produk', function ($query) {
+            $query->where('id', '2'); // Ganti 'nama' dengan kolom yang sesuai di tabel jenis_produk
+        })
+        ->get();
+        
         return view('catering', compact('produk'));
     }
     public function beranda()
