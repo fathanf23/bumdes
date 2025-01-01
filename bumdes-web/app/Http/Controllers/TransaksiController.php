@@ -46,8 +46,6 @@ class TransaksiController extends Controller
         // Menyimpan file foto
         if ($request->hasFile('bukti_bayar')) {
             $file = $request->file('bukti_bayar');
-            
-            // Menggunakan nama file asli atau custom nama dari input
             $filename = $file->getClientOriginalName();
             $filepath = 'img_bukti_bayar/'; // Direktori penyimpanan
             
@@ -58,7 +56,7 @@ class TransaksiController extends Controller
                 'tanggal' => now(),
                 'pembayaran' => $request->input('pembayaran'),
                 'total_bayar' => $request->input('total_bayar'),
-                'status' => 'PENDING',
+                'status' => 'Pending',
                 'jenis_transaksi' => $request->input('jenis_transaksi'),
                 'bukti_bayar' => $filename,
                 'user_id' => $request->input('user_id'),

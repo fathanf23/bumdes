@@ -96,15 +96,6 @@ class ProdukController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // Validasi data yang diterima dari form
-        $request->validate([
-            'nm_produk' => 'required|string|max:45',
-            'harga' => 'required|numeric',
-            'deskripsi' => 'required|string|max:255',
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'jenis_produk_id' => 'required|exists:jenis_produk,id'
-        ]);
-
         // Cari produk berdasarkan ID
         $produk = Produk::findOrFail($id);
 

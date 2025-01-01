@@ -80,8 +80,12 @@ public function remove($id)
         // Simpan bukti bayar (jika ada)
         $buktiBayarPath = null;
         if ($request->hasFile('bukti_bayar')) {
-            $buktiBayarPath = $request->file('bukti_bayar')->store('img_bukti_bayar', 'public');
-        }
+            $file = $request->file('bukti_bayar');
+            $filename = $file->getClientOriginalName();
+            $filepath = 'img_bukti_bayar/'; // Direktori penyimpanan
+            $file->move(public_path($filepath), $filename);
+
+
 
         // Simpan ke tabel transaksi
         $transaksiId = DB::table('transaksi')->insertGetId([
@@ -91,10 +95,10 @@ public function remove($id)
             'total_bayar' => $totalBayar,
             'status' => 'Pending',
             'jenis_transaksi' => $request->input('payment'),
-            'bukti_bayar' => $buktiBayarPath,
+            'bukti_bayar' => $filename,
             'user_id' => Auth::id(),
         ]);
-        
+    }
 
         // Simpan ke tabel detail_transaksi
         foreach ($cart as $id => $details) {

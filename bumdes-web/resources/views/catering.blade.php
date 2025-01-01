@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="text-center fw-bold mb-5" style="color: #1a202c;">Catering</h1>
+    <h1 class="text-center fw-bold mb-5" style="color: #1a202c;">Menu Catering</h1>
     <div class="row g-4">
         @foreach($produk as $item)
         <div class="col-lg-3 col-md-4 col-sm-6">

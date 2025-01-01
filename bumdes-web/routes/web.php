@@ -58,7 +58,7 @@ Route::prefix('admin/produk')->group(function () {
     Route::post('/store', [ProdukController::class, 'store']);
     Route::get('/destroy/{id}', [ProdukController::class, 'destroy']);
     Route::get('/edit/{id}', [ProdukController::class, 'edit']);
-    Route::post('/update/{id}', [ProdukController::class, 'post']);
+    Route::post('/update/{id}', [ProdukController::class, 'update']);
 });
 Route::prefix('admin/jenis_produk')->group(function () {
     Route::get('/index', [JenisProdukController::class, 'index']);

@@ -98,8 +98,8 @@
                     </div>
                     <!-- Bukti Pembayaran -->
                     <div class="mb-3" id="buktiBayarInput" style="display: none;">
-                        <label for="buktiBayar" class="form-label">Upload Bukti Pembayaran</label>
-                        <input type="file" class="form-control" id="buktiBayar" name="bukti_bayar" accept="image/*">
+                    <label for="foto" class="form-label text-dark font-weight-bold">Bukti Pembayaran</label>
+                    <input type="file" class="form-control" id="foto" name="bukti_bayar">
                     </div>
                 </div>
                 <div class="modal-footer">

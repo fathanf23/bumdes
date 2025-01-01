@@ -38,7 +38,7 @@
                 <div class="mb-3">
                     <label for="jenis_produk" class="form-label text-dark font-weight-bold">Jenis Produk</label>
                     <select class="form-select" name="jenis_produk_id" id="jenis_produk">
-                        <option selected disabled>{{$p->jenis_produk->jenis_produk}}</option>
+                        <option>{{$p->jenis_produk->id}}</option>
                         @foreach($jenis_produk as $item)
                         <option value="{{$item->id}}">{{$item->jenis_produk}}</option>
                         @endforeach
