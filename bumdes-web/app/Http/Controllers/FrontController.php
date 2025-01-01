@@ -19,15 +19,21 @@ class FrontController extends Controller
         
         return view('catering', compact('produk'));
     }
+    public function playground()
+    {
+        $produk = Produk::with('jenis_produk')
+        ->whereHas('jenis_produk', function ($query) {
+            $query->where('id', '1'); // Ganti 'nama' dengan kolom yang sesuai di tabel jenis_produk
+        })
+        ->get();
+        
+        return view('playground', compact('produk'));
+    }
     public function beranda()
     {
         return view('frontend.beranda');
     }
-    public function playground()
-    {
-        return view('playground'); // Pastikan file 'playground.blade.php' ada
-    }
-
+   
     /**
      * Show the form for creating a new resource.
      */

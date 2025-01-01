@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\JenisProdukController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\TransaksiController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DetailTransaksiController;
 
 /*
@@ -30,6 +32,21 @@ Route::get('/catering', [FrontController::class, 'catering'])->name('catering');
 
 // Route Beranda
 Route::get('/frontend/beranda/', [FrontController::class, 'beranda'])->name('beranda');
+
+// Routing Login Register
+Route::get('login', [LoginController::class, 'login'])->name('login');
+Route::post('/login_proses', [LoginController::class, 'login_proses'])->name('login_proses');
+Route::get('register', [LoginController::class, 'register'])->name('register');
+Route::get('register/store', [LoginController::class, 'registerStore']);
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
+
+
+// Routing Cart
+Route::get('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('add.to.cart');
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
+Route::post('/checkout/process', [CartController::class, 'process'])->name('checkout.process');
+
 
 // Admin Dashboard
 Route::get('/admin/dashboard/', [DashboardController::class, 'index'])->name('admin');
