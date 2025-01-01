@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use App\Models\JenisProduk;
-
+use DB;
 class CartController extends Controller
 {
     public function addToCart($id)
@@ -64,13 +65,6 @@ public function remove($id)
     }
     public function process(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'address' => 'required|string',
-            'payment' => 'required|string|in:CASH,TRANSFER',
-            'bukti_bayar' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Jika ada upload bukti
-        ]);
-
         // Generate No Transaksi (A001++)
         $lastTransaction = DB::table('transaksi')->latest('id')->first();
         $newNoTransaksi = $lastTransaction
